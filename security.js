@@ -5,19 +5,26 @@ var roomData = "nzydfxpc-rclop-qwzhpc-qtylyntyr-769[oshgk]";
 
 
 var roomData = roomData.split("[");
-
+console.log("roomData after split()", roomData);
 var checksum =  roomData[1].replace(/\]/,"");
-console.log(checksum);
+console.log("checksum: ",checksum);
 
+var secCode = roomData[0].split("-");
+console.log("secCode after split(at -): ",secCode);
+var sectorID = secCode.pop();//pop removes the last item from the array (which is the sectorID) and returns it. We store it in var sectorID.
+console.log("sectorID after pop()",sectorID);
+console.log("secCode after pop()",secCode);
+var securityCode = secCode.join(","); //renamed secCode in securityCode, for better understanding.
+console.log("secCode after join(): ",securityCode);
+var securityCode = securityCode.replace(/[, ]+/g, "");
+console.log("securityCode after replace(","): ",securityCode);
 
-//remember to use ssh when copying path to git
-
-var secCode = roomData[0].replace(/\-+/g,"");
-
-var secCode = secCode.replace(/\d+/g,"");
-sortCode = secCode.split("");
+//var secCode = roomData[0].replace(/\-+/g,"");
+//Trying to use first split(at numbers), and then pop(), to move the last item to a new array. So we keep the ID for later.
+//var secCode = secCode.replace(/\d+/g,"");
+sortCode = securityCode.split("");
 sortCode = sortCode.sort();
-console.log(secCode);
+console.log("sortCode: ",sortCode);
 
 
 // puzzle elements:  security-code , sector-id , checksum ,  verified-checksum
