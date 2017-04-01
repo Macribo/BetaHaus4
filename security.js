@@ -25,7 +25,8 @@ console.log("securityCode after replace(","): ",securityCode);
 sortCode = securityCode.split("");
 sortCode = sortCode.sort();
 console.log("sortCode: ",sortCode);
-
+var checksum = checksum.split("");
+console.log("checksum after split()",checksum);
 
 // puzzle elements:  security-code , sector-id , checksum ,  verified-checksum
 
