@@ -1,8 +1,8 @@
 //jshint esversion:6
 //var roomData= require("./roomData");
 
-var roomData = "nzydfxpc-rclop-qwzhpc-qtylyntyr-769[oshgk]";
-
+//var roomData = "nzydfxpc-rclop-qwzhpc-qtylyntyr-769[oshgk]";
+var roomData = "aaaaa-bbb-z-y-x-123[abxyz]";
 
 var roomData = roomData.split("[");
 console.log("roomData after split()", roomData);
@@ -28,6 +28,21 @@ console.log("sortCode: ",sortCode);
 var checksum = checksum.split("");
 console.log("checksum after split()",checksum);
 
+function arrayCompare(){
+    var count = 0;
+    var arraySecCode = sortCode;
+    var arrayChecksum = checksum;
+    for (var i = 0; i < arraySecCode.length; i++){
+        console.log ("arraySecCode in for loop",arraySecCode[i]);
+        for(var j = 0; j < arrayChecksum.length; j++ ){
+            if(arraySecCode[i] === arrayChecksum[j]){
+                console.log("for loop (j): ", arraySecCode[i]);
+                count++;
+            }
+        }
+    }
+}
+arrayCompare();
 // puzzle elements:  security-code , sector-id , checksum ,  verified-checksum
 
 
