@@ -2,37 +2,58 @@
 //var roomData= require("./roomData");
 
 var roomData = "nzydfxpc-rclop-qwzhpc-qtylyntyr-769[oshgk]";
-
+//var roomData = "aaaaa-bbb-z-y-x-123[abxyz]";
 
 var roomData = roomData.split("[");
-
+//console.log("roomData after split()", roomData);
 var checksum =  roomData[1].replace(/\]/,"");
-console.log(checksum);
+//console.log("checksum: ",checksum);
 
-
-//remember to use ssh when copying path to git
-
-var secCode = roomData[0].replace(/\-+/g,"");
-
-var secCode = secCode.replace(/\d+/g,"");
-
-// puzzle elements:  security-code , sector-id , checksum ,  verified-checksum
-
-
-// use split the security-code and arrange in alphabetical order
-sortCode = secCode.split("");
-secCode = sortCode.sort();
-console.log(secCode);
-
-
-
-// count 'like' elements in the array. 
-
-            var k = [];
-for (i = 0; i<= secCode.length-1; i++){
-    var current= secCode[i];
-    console.log(current);  
- 
-}
-// find the 5 most frequent elements to verified-checksum (adding elements in alphabetical order when they have the same frequency)If verified checksup === checksum, add this element's sector-id to sectorIdTotal.
+var secCode = roomData[0].split("-");
+//console.log("secCode after split(at -): ",secCode);
+var sectorID = secCode.pop();//pop removes the last item from the array (which is the sectorID) and returns it. We store it in var sectorID.
+var securityCode = secCode.join(","); //renamed secCode in securityCode, for better understanding.
+var securityCode = securityCode.replace(/[, ]+/g, "");
+var securityCode = securityCode.split("");
+//console.log(securityCode);
 //
+//
+function findSecFrequency(SecurityCode){
+var oChecksum = {};
+
+securityCode.forEach(function (key){
+    if (oChecksum.hasOwnProperty(key)){
+        oChecksum[key]++;
+    
+    }
+    else{
+
+    oChecksum[key]  = 1;
+    }
+});
+console.log(oChecksum);
+return oChecksum;
+
+}
+
+findSecFrequency(securityCode);
+
+function sortByCount (oChecksum){
+    var finalSecSort = Object.keys(oChecksum).map(function (key){
+    return{
+        name: key,
+        total: oChecksum[key]
+    };
+    });
+
+    finalSecSort.sort(function(a,b){
+        return b.total - a.total;    
+});
+console.log(finalSecSort);
+return finalSecSort;
+
+    }
+var oChecksum = findSecFrequency(securityCode);
+sortByCount(oChecksum);
+
+//http://chrisjopa.com/2016/04/21/counting-word-frequencies-with-javascript/
