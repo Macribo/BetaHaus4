@@ -15,13 +15,24 @@ console.log(checksum);
 var secCode = roomData[0].replace(/\-+/g,"");
 
 var secCode = secCode.replace(/\d+/g,"");
-sortCode = secCode.split("");
-sortCode = sortCode.sort();
-console.log(secCode);
-
 
 // puzzle elements:  security-code , sector-id , checksum ,  verified-checksum
 
 
 // use split the security-code and arrange in alphabetical order
-// counting 'like' elements in the array.  find the 5 most frequent elements to verified-checksum (adding elements in alphabetical order when they have the same frequency).  if verified checksup === checksum, add this element's sector-id to sectorIdTotal.
+sortCode = secCode.split("");
+secCode = sortCode.sort();
+console.log(secCode);
+
+
+
+// count 'like' elements in the array. 
+
+            var k = [];
+for (i = 0; i<= secCode.length-1; i++){
+    var current= secCode[i];
+    console.log(current);  
+ 
+}
+// find the 5 most frequent elements to verified-checksum (adding elements in alphabetical order when they have the same frequency)If verified checksup === checksum, add this element's sector-id to sectorIdTotal.
+//
