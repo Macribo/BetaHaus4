@@ -75,14 +75,20 @@ frequencyArray = [];
 for(var i = 0; i< test.length-1; i++){
    var x = test[i].name ;
     if( test[i].total === test[i+1].total){
-        console.log(x);
+        firstAlikeFrequency.push(test[i]);
     }
 
-    else{}
+    else{
+        firstAlikeFrequency.push(test[i]);
+        break;
+        
+    
+    }
 
 
 }
-console.log( "test[i],test[-1]",test[i].total,test[i+1].total);
+//console.log("test: ",test);
+console.log("firstAlikeFrequency: ", firstAlikeFrequency);
 
 /*
  *check frequency of most frequent letter.
