@@ -18,6 +18,7 @@ var securityCode = securityCode.split("");
 //console.log(securityCode);
 //
 //
+
 function findSecFrequency(SecurityCode){
 var oChecksum = {};
 
@@ -31,29 +32,64 @@ securityCode.forEach(function (key){
     oChecksum[key]  = 1;
     }
 });
-console.log(oChecksum);
 return oChecksum;
 
 }
 
-findSecFrequency(securityCode);
+
+
+var test = findSecFrequency(securityCode);
+
+
+
 
 function sortByCount (oChecksum){
     var finalSecSort = Object.keys(oChecksum).map(function (key){
-    return{
-        name: key,
-        total: oChecksum[key]
-    };
+        return{
+            name: key,
+            total: oChecksum[key]
+        };
     });
 
     finalSecSort.sort(function(a,b){
         return b.total - a.total;    
-});
-console.log(finalSecSort);
-return finalSecSort;
+    });
+    return finalSecSort;
 
     }
 var oChecksum = findSecFrequency(securityCode);
-sortByCount(oChecksum);
-
+test = sortByCount(oChecksum);
 //http://chrisjopa.com/2016/04/21/counting-word-frequencies-with-javascript/
+
+
+firstAlikeFrequency = [];
+secondAlikeFrequency = [];
+thirdAlikeFrequency = [];
+fourthAlikeFrequency = [];
+fifthAlikeFrequency = [];
+frequencyArray = [];
+//frequencyArray.push(test[0].name);
+//console.log(frequencyArray);
+
+
+for(var i = 0; i< test.length-1; i++){
+   var x = test[i].name ;
+    if( test[i].total === test[i+1].total){
+        console.log(x);
+    }
+
+    else{}
+
+
+}
+
+
+/*
+ *check frequency of most frequent letter.
+ if !== next most frequent,
+    add most frequent letter value to arrayA.
+ //array a = [y];
+
+ *
+ *
+ * */
