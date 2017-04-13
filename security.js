@@ -82,7 +82,7 @@ for(var i = 0; i< test.length-1; i++){
 
 
 }
-
+console.log( "test[i],test[-1]",test[i].total,test[i+1].total);
 
 /*
  *check frequency of most frequent letter.
