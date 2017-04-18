@@ -72,30 +72,37 @@ frequencyArray = [];
 //console.log(frequencyArray);
 
 
+function theThingWeDo(toWhichArray){
+
+
+
 for(var i = 0; i< test.length-1; i++){
-   var x = test[i].name ;
     if( test[i].total === test[i+1].total){
-        firstAlikeFrequency.push(test[i]);
+        toWhichArray.push(test.slice(0,1));
+        console.log("item added to ", toWhichArray);
     }
-
-    else{
-        firstAlikeFrequency.push(test[i]);
-        break;
-        
     
-    }
+    else{
+        toWhichArray.push(test.slice(0,1));
 
+        console.log("item added to ", toWhichArray," and exiting loop");
+        break;    
+    }
 
 }
-//console.log("test: ",test);
-console.log("firstAlikeFrequency: ", firstAlikeFrequency);
+}
 
-/*
- *check frequency of most frequent letter.
- if !== next most frequent,
-    add most frequent letter value to arrayA.
- //array a = [y];
+//using splice throws off our loop.
+//not using a loop means we don't 'catch' multiple instances of co-frequent letters.
+//
+theThingWeDo(firstAlikeFrequency);
 
- *
- *
- * */
+theThingWeDo(secondAlikeFrequency);
+
+theThingWeDo(thirdAlikeFrequency);
+
+
+console.log("firstAlike: ",firstAlikeFrequency);
+console.log("secondAlike: ",secondAlikeFrequency);
+console.log("thirdAlike: ",thirdAlikeFrequency);
+console.log("test", test);
