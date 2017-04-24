@@ -69,26 +69,7 @@ var thirdAlikeFrequency = [];
 var fourthAlikeFrequency = [];
 var fifthAlikeFrequency = [];
 var frequencyArray = [];
-//frequencyArray.push(test[0].name);
-//console.log(frequencyArray);:62
-//
-/*
-function sortInFrequencyArrays(chosenArray){
-    for(var i = 0; i< test.length+1; i++){ 
-        console.log("for",i);
-        if( test[i].total === test[i+1].total){
-            chosenArray.push(test.splice(0,1));
-        //}
-          //  else if (test[i].total === test[i+1].total ){
-           // chosenArray.push(test.splice(0,1));
-        } 
-        else{ 
-            chosenArray.push(test.splice(0,1));
-            break;
-}
-}
-}
-*/
+
 function sortInFrequencyArrays(chosenArray){
     for(var i = 0; i< test.length-1; i++){
         if( test[i].total === test[i+1].total ){
