@@ -10,12 +10,12 @@ var checksum =  roomData[1].replace(/\]/,"");
 //console.log("checksum: ",checksum);
 
 var secCode = roomData[0].split("-");
-//console.log("secCode after split(at -): ",secCode);
+console.log("secCode after split(at -): ",secCode);
 var sectorID = secCode.pop();//pop removes the last item from the array (which is the sectorID) and returns it. We store it in var sectorID.
 var securityCode = secCode.join(","); //renamed secCode in securityCode, for better understanding.
 var securityCode = securityCode.replace(/[, ]+/g, "");
 var securityCode = securityCode.split("");
-//console.log(securityCode);
+//console.log("securitycode after split" ,securityCode);
 //
 //
 
@@ -59,50 +59,65 @@ function sortByCount (oChecksum){
     }
 var oChecksum = findSecFrequency(securityCode);
 test = sortByCount(oChecksum);
+console.log("test",test);//now all letters are sorted by frequency of count
 //http://chrisjopa.com/2016/04/21/counting-word-frequencies-with-javascript/
 
 
-firstAlikeFrequency = [];
-secondAlikeFrequency = [];
-thirdAlikeFrequency = [];
-fourthAlikeFrequency = [];
-fifthAlikeFrequency = [];
-frequencyArray = [];
+var firstAlikeFrequency = [];
+var secondAlikeFrequency = [];
+var thirdAlikeFrequency = [];
+var fourthAlikeFrequency = [];
+var fifthAlikeFrequency = [];
+var frequencyArray = [];
 //frequencyArray.push(test[0].name);
-//console.log(frequencyArray);
-
-
-function theThingWeDo(toWhichArray){
-
-
-
-for(var i = 0; i< test.length-1; i++){
-    if( test[i].total === test[i+1].total){
-        toWhichArray.push(test.slice(0,1));
-        console.log("item added to ", toWhichArray);
-    }
-    
-    else{
-        toWhichArray.push(test.slice(0,1));
-
-        console.log("item added to ", toWhichArray," and exiting loop");
-        break;    
-    }
-
-}
-}
-
-//using splice throws off our loop.
-//not using a loop means we don't 'catch' multiple instances of co-frequent letters.
+//console.log(frequencyArray);:62
 //
-theThingWeDo(firstAlikeFrequency);
+/*
+function sortInFrequencyArrays(chosenArray){
+    for(var i = 0; i< test.length+1; i++){ 
+        console.log("for",i);
+        if( test[i].total === test[i+1].total){
+            chosenArray.push(test.splice(0,1));
+        //}
+          //  else if (test[i].total === test[i+1].total ){
+           // chosenArray.push(test.splice(0,1));
+        } 
+        else{ 
+            chosenArray.push(test.splice(0,1));
+            break;
+}
+}
+}
+*/
+function sortInFrequencyArrays(chosenArray){
+    for(var i = 0; i< test.length-1; i++){
+        if( test[i].total === test[i+1].total ){
+            console.log("if = true: test[i]=",test[i].name);
+            console.log("test[i+1]",test[i+1].name);
+            chosenArray.push(test.splice(0,1));
+            i--;// i is set back to 0. Otherwise p is the first item to be skipped, because i becomes 1.
+        }
 
-theThingWeDo(secondAlikeFrequency);
+    else{
+        console.log("else = true");
+        console.log("test[i]", test[i].name);
+        chosenArray.push(test.splice(0,1));
+        break;
+    }
+}
+}
+sortInFrequencyArrays(firstAlikeFrequency);
+sortInFrequencyArrays(secondAlikeFrequency);
+sortInFrequencyArrays(thirdAlikeFrequency);
+sortInFrequencyArrays(fourthAlikeFrequency);
+sortInFrequencyArrays(fifthAlikeFrequency);
+sortInFrequencyArrays(frequencyArray);
+console.log("first",firstAlikeFrequency);
+console.log("second",secondAlikeFrequency);
+console.log("third",thirdAlikeFrequency);
+console.log("fourth",fourthAlikeFrequency);
+console.log("fifth",fifthAlikeFrequency);
+console.log("rest",frequencyArray);
 
-theThingWeDo(thirdAlikeFrequency);
 
 
-console.log("firstAlike: ",firstAlikeFrequency);
-console.log("secondAlike: ",secondAlikeFrequency);
-console.log("thirdAlike: ",thirdAlikeFrequency);
-console.log("test", test);
