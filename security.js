@@ -48,15 +48,16 @@ console.log("here we are!!oChecksum", oChecksum);
 */
 //for..in loop
 console.log("*******oChecksum", oChecksum);
+
+
 function sortByCount (foo){
-    console.log("oChecksum", oChecksum);
     var finalSecSort = Object.keys(oChecksum).map(function (key){
         return{
             name: key,
             total: oChecksum[key]
         };
     });
-
+    console.log("* * * * MAP FUNCTION RETURNS ",finalSecSort, "* * * * /END");
     finalSecSort.sort(function(a,b){
         return b.total - a.total;    
     });
@@ -72,7 +73,7 @@ function firstFiveLetters (foo){
         return sortedFive;
     }
 var finalFive = firstFiveLetters(sortedObject);
-console.log(finalFive);
+/*console.log(finalFive);
 
 function finalLetters(){
     var five = finalFive.map(function(singleItem){
@@ -81,12 +82,14 @@ function finalLetters(){
     return five;
 }
 var winningFive = finalLetters();
-console.log(winningFive);
+//console.log(winningFive);
 var winFive = winningFive.join();
-console.log("winningFive",winFive);//next: compare result (winFive) with this line of codes checksum. If it is a match, store sector ID in an Array or Object to add them up in the end.
+*/
+console.log("sorted object >>>>",sortedObject);
+
+//console.log("winningFive",winFive);//next: compare result (winFive) with this line of codes checksum. If it is a match, store sector ID in an Array or Object to add them up in the end.
 
 //function compareToChecksum(){}
-
 
 
 
