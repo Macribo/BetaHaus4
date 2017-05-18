@@ -5,45 +5,51 @@ var roomData = "nzydfxpc-rclop-qwzhpc-qtylyntyr-769[oshgk]";
 //var roomData = "aaaaa-bbb-z-y-x-123[abxyz]";
 
 var roomData = roomData.split("[");
-//console.log("roomData after split()", roomData);
+console.log("roomData after split()", roomData);
 var checksum =  roomData[1].replace(/\]/,"");
-//console.log("checksum: ",checksum);
+console.log("checksum is given the value of: roomData[1].replace ]",checksum);
 
 var secCode = roomData[0].split("-");
 console.log("secCode after split(at -): ",secCode);
 var sectorID = secCode.pop();//pop removes the last item from the array (which is the sectorID) and returns it. We store it in var sectorID.
+console.log("secCode after pop()",secCode);
 var securityCode = secCode.join(","); //renamed secCode in securityCode, for better understanding.
+console.log("securityCode = value of secCode after join()",securityCode);
 var securityCode = securityCode.replace(/[, ]+/g, "");
 var securityCode = securityCode.split("");
-//console.log("securitycode after split" ,securityCode);
+console.log("securitycode after split" ,securityCode);
 //
 //
 
 function findSecFrequency(SecurityCode){
-var oChecksum = {};
+var oChecksum = [];//empty object
 
-securityCode.forEach(function (key){
-    if (oChecksum.hasOwnProperty(key)){
-        oChecksum[key]++;
-    
+securityCode.forEach(function (letter){//for each does the function on every item of the Array (securityCode
+    if (oChecksum.hasOwnProperty(letter)){//checks if oChecksum has already the Property
+        console.log('there is a property already so i will just add plus one');
+        oChecksum[letter]++;
+
     }
     else{
-
-    oChecksum[key]  = 1;
+        console.log('it doesnt have a property! I will have to create a new object');
+        oChecksum[letter]  = 1;
     }
-});
-return oChecksum;
-
+    });
+    return oChecksum;
 }
-
-
-
-var test = findSecFrequency(securityCode);
-
-
-
-
-function sortByCount (oChecksum){
+var oChecksum = findSecFrequency(securityCode);
+console.log("here we are!!oChecksum", oChecksum);
+/*
+ * it returns something like this
+{
+    a: 2,
+    c: 3,
+}
+*/
+//for..in loop
+console.log("*******oChecksum", oChecksum);
+function sortByCount (foo){
+    console.log("oChecksum", oChecksum);
     var finalSecSort = Object.keys(oChecksum).map(function (key){
         return{
             name: key,
@@ -57,12 +63,121 @@ function sortByCount (oChecksum){
     return finalSecSort;
 
     }
-var oChecksum = findSecFrequency(securityCode);
-test = sortByCount(oChecksum);
-console.log("test",test);//now all letters are sorted by frequency of count
+var sortedObject = sortByCount(oChecksum);
+console.log(sortedObject);
+
+function firstFiveLetters (foo){
+    console.log("sortedObject");
+    var sortedFive = sortedObject.slice(0,5);
+        return sortedFive;
+    }
+var finalFive = firstFiveLetters(sortedObject);
+console.log(finalFive);
+
+function finalLetters(){
+    var five = finalFive.map(function(singleItem){
+        return singleItem.name;
+    });
+    return five;
+}
+var winningFive = finalLetters();
+console.log(winningFive);
+var winFive = winningFive.join();
+console.log("winningFive",winFive);//next: compare result (winFive) with this line of codes checksum. If it is a match, store sector ID in an Array or Object to add them up in the end.
+
+//function compareToChecksum(){}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ *
+function sortForFrequency(foo){ 
+    for (var letter  in oChecksum){
+        console.log("letter",letter);
+        console.log("oChecksum[letter]", oChecksum[letter]);
+    }
+
+    return {
+      name: letter,
+        frequency: oChecksum[letter] 
+    };
+  :  //oChecksum.sort(function(a, b){
+      //      return b - a;
+    //});
+
+    //oChecksum.sort(function(a, b) {
+          //    return a.total - b.total;
+        //});
+
+}
+var result = sortForFrequency(oChecksum);
+console.log("result",result);
+/*
+function comparison(key){//for each does the function on every item of the Array (securityCode
+       console.log(key,sum[key]); 
+            
+        }
+
+function sortByFrequency(sum){
+    console.log("sum",sum);
+    var mostFrequent = 0;
+    console.log("abc");
+    console.log("sum.length",sum.length);
+    sum.forEach(function (key){
+    console.log(key,sum[key]); 
+});
+    return mostFrequent;
+}
+var storeMostFrequent = sortByFrequency(oChecksum);
+console.log("mostFrequent",storeMostFrequent);
+
+*/
+//test = sortByCount(oChecksum);
+//console.log("test",test);//now all letters are sorted by frequency of count
+
 //http://chrisjopa.com/2016/04/21/counting-word-frequencies-with-javascript/
 
+//for ..in loops through the properties of an object
 
+/*
+var oChecksum = findSecFrequency(securityCode);
+console.log("oChecksum", oChecksum);
+test = sortByCount(oChecksum);
+
+function sortByCount(oChecksum){
+    var finalSecSort = Object.total(oChecksum);
+    console.log("Object, keys..:",Object.total(oChecksum));
+    for (var key in oChecksum){
+        console.log("for");
+        return{
+            name: key,
+                total: oChecksum[key]
+        };
+        //finalSecSor.sort(function(a,b){
+        //  return b.total - a.total;
+    }
+    }
+
+
+
+
+
+
+*/
+//var check = sortByCount(oChecksum);
+//
+//console.log("return value",check);
+/*
 var firstAlikeFrequency = [];
 var secondAlikeFrequency = [];
 var thirdAlikeFrequency = [];
@@ -99,6 +214,4 @@ console.log("third",thirdAlikeFrequency);
 console.log("fourth",fourthAlikeFrequency);
 console.log("fifth",fifthAlikeFrequency);
 console.log("rest",frequencyArray);
-
-
-
+*/
