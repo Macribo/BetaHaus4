@@ -94,7 +94,22 @@ console.log("sorted object >>>>",sortedObject);
 
 
 
+var firstAlikeFrequency = [];
+var secondAlikeFrequency = [];
+var thirdAlikeFrequency = [];
+var fourthAlikeFrequency = [];
+var fifthAlikeFrequency = [];
+var frequencyArray = [];
 
+function fillFrequencyArrays(foo){
+ 
+    for(var i = 0; i< foo.length; i++){
+            
+       // if(foo[i].total)
+
+}
+
+}
 
 
 
