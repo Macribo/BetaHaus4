@@ -51,7 +51,7 @@ console.log("*******oChecksum", oChecksum);
 
 
 function sortByCount (foo){
-    var finalSecSort = Object.keys(oChecksum).map(function (key){
+    var finalSecSort = Object.keys(oChecksum).map(function (key){//Object.keys(oChecksum) turns the object "oChecksum" into an array. Now you can use array methods like map! Inside the map function the input is each item in the array, in order. If you "return" from the map function, you will get a new array of the "returned" items.
         return{
             name: key,
             total: oChecksum[key]
@@ -99,18 +99,37 @@ var secondAlikeFrequency = [];
 var thirdAlikeFrequency = [];
 var fourthAlikeFrequency = [];
 var fifthAlikeFrequency = [];
-var frequencyArray = [];
+var whatsleftArray = [];
 
-function fillFrequencyArrays(foo){
- 
-    for(var i = 0; i< foo.length; i++){
-            
-       // if(foo[i].total)
-
+function fillFrequencyArrays(chosenArray){
+     
+    for(var i = 0; i< sortedObject.length; i++){
+        console.log("sortedObject[i].total",sortedObject[i].total);
+        console.log("::::::::",sortedObject);
+        if(sortedObject[i].total ===  sortedObject[i++].total){
+            chosenArray.push(sortedObject.splice(0,1));// for loop iterates and as long as total is the same, items are pushed to the same array.
+            i--;//first item of array is cut of. i has to be set to 0 again, to start the next loop at the first item again.
+        }            
+        else {
+            chosenArray.push(sortedObject.splice(0,1));
+            break;
+        }
 }
 
 }
 
+fillFrequencyArrays(firstAlikeFrequency);
+fillFrequencyArrays(secondAlikeFrequency);
+fillFrequencyArrays(thirdAlikeFrequency);
+fillFrequencyArrays(fourthAlikeFrequency);
+fillFrequencyArrays(fifthAlikeFrequency);
+fillFrequencyArrays(whatsleftArray);
+console.log("first",firstAlikeFrequency);
+console.log("second",secondAlikeFrequency);
+console.log("third",thirdAlikeFrequency);
+console.log("fourth",fourthAlikeFrequency);
+console.log("fifth",fifthAlikeFrequency);
+console.log("whatsleftArray",whatsleftArray);
 
 
 
