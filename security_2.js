@@ -93,11 +93,12 @@ var winFive = winningFive.join();
 
 
 
-var firstAlikeFrequency = [];
-var secondAlikeFrequency = [];
-var thirdAlikeFrequency = [];
-var fourthAlikeFrequency = [];
-var lastAlikeFrequency = [];
+var frequencyOne = [];
+var frequencyTwo = [];
+var frequencyThree = [];
+var frequencyFour = [];
+var frequencyFive = [];
+var frequencySix = [];
 var whatsleftArray = [];
 
 
@@ -223,13 +224,21 @@ console.log("fifth",fifthAlikeFrequency);
 console.log("rest",frequencyArray);
 */
 //console.log("at the end, sortedObject", sortedObject);
-var sebbene = sortedObject;
-for (var i=0;i < sebbene.length; i++ ){
-    if(sebbene[i].total === 1){
-        lastAlikeFrequency.push(sebbene[i].name);
+function sortForFrequency(frequencyArray,count){
+    var sorted = sortedObject;
+    for (var i=0;i < sorted.length; i++ ){
+        if(sorted[i].total === count){
+            frequencyArray.push(sorted[i].name);
+        }
     }
 }
-console.log("XXXXXXXX lastAlikeFrequency",lastAlikeFrequency);
+sortForFrequency(frequencyOne,1);
+sortForFrequency(frequencyTwo,2);
+sortForFrequency(frequencyThree,3);
+sortForFrequency(frequencyFour,4);
+sortForFrequency(frequencyFive,5);
+sortForFrequency(frequencySix,6);
+console.log("XXXXXXXX frequencyOne",frequencyOne);
 
 
 
