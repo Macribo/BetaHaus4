@@ -1,8 +1,14 @@
 //jshint esversion:6
 //var roomData= require("./roomData");
 
-var roomData = "nzydfxpc-rclop-qwzhpc-qtylyntyr-769[oshgk]";
-//var roomData = "aaaaa-bbb-z-y-x-123[abxyz]";
+var validSectorIDs=[];
+
+
+
+
+//---
+//var roomData = "nzydfxpc-rclop-qwzhpc-qtylyntyr-769[oshgk]";
+var roomData = "aaaaa-bbb-z-y-x-123[abxyz]";
 
 var roomData = roomData.split("[");
 console.log("roomData after split()", roomData);
@@ -231,6 +237,7 @@ function sortForFrequency(frequencyArray,count){
             frequencyArray.push(sorted[i].name);
         }
     }
+  return frequencyArray.sort(); 
 }
 sortForFrequency(frequencyOne,1);
 sortForFrequency(frequencyTwo,2);
@@ -239,21 +246,32 @@ sortForFrequency(frequencyFour,4);
 sortForFrequency(frequencyFive,5);
 sortForFrequency(frequencySix,6);
 console.log("XXXXXXXX frequencyOne",frequencyOne);
+console.log("XXXXXXXX frequencyTwo",frequencyTwo);
+console.log("XXXXXXXX frequencyThree",frequencyThree);
+console.log("XXXXXXXX frequencyFour",frequencyFour);
+console.log("XXXXXXXX frequencyFive",frequencyFive);
 
+var finalArray = frequencyFive.concat(frequencyFour,frequencyThree,frequencyTwo,frequencyOne);
+finalArray= finalArray.splice(0,5);
+finalArray= finalArray.join();
+finalArray = finalArray.replace(/[,]+/g, "");
+console.log(finalArray);
 
+console.log(checksum);
 
+function testIt(checksum,finalArray){
+    if (checksum===finalArray){
+        validSectorIDs.push(sectorID);
+        console.log("is a room!");
+    }
+    else{
+        console.log("not a room");
+    }
+}
 
+console.log(sectorID);
 
-
-
-
-
-
-
-
-
-
-
+testIt(checksum,finalArray);
 
 
 
