@@ -4,6 +4,7 @@ var data = require("./codes");
 var validSectorIDs=[];
 var total = 0;
 var codes = data.split("\n");
+console.log(codes);
 var totalValids = 0;
 
 function testIt(checksum,finalArray){
